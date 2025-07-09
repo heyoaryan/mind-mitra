@@ -1,12 +1,11 @@
-/* src/pages/Auth.css */
-
+/* Modern Dark Auth Pages */
 .auth-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   padding: 1rem;
-  background: linear-gradient(135deg, #d4f0fc, #e7d0f9);
+  background: radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0a 100%);
   position: relative;
   overflow: hidden;
   animation: fadeIn 0.8s ease-out;
@@ -14,184 +13,27 @@
 
 .auth-page::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(126,93,187,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(126,93,187,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(126,93,187,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
+  animation: backgroundShift 20s ease-in-out infinite;
   z-index: 0;
+  pointer-events: none;
 }
 
-.auth-container {
-  max-width: 400px;
-  width: 100%;
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.auth-container::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(126, 93, 187, 0.05), transparent);
-  animation: rotate 20s linear infinite;
-  z-index: -1;
-}
-
-.auth-container h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #72509d;
-  position: relative;
-  animation: fadeInDown 0.8s ease-out 0.3s both;
-}
-
-.auth-container h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background: linear-gradient(to right, #7e5dbb, #060f1f);
-  animation: expandLine 1s ease-out 0.8s forwards;
-}
-
-.auth-container input {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 30px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  animation: fadeInUp 0.8s ease-out;
-  animation-fill-mode: both;
-  position: relative;
-}
-
-.auth-container input:nth-child(3) { animation-delay: 0.4s; }
-.auth-container input:nth-child(4) { animation-delay: 0.5s; }
-
-.auth-container input:focus {
-  outline: none;
-  border-color: #7e5dbb;
-  box-shadow: 0 0 25px rgba(126, 93, 187, 0.3);
-  transform: scale(1.02);
-  background: rgba(255, 255, 255, 1);
-}
-
-.auth-container input::placeholder {
-  color: #999;
-  transition: all 0.3s ease;
-}
-
-.auth-container input:focus::placeholder {
-  color: #7e5dbb;
-  transform: translateY(-2px);
-}
-
-.auth-container button {
-  width: 100%;
-  padding: 0.9rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #7e5dbb, #060f1f);
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-}
-
-.auth-container button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
-}
-
-.auth-container button:hover {
-  background: linear-gradient(135deg, #7e5dbb, #060f1f);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(126, 93, 187, 0.4);
-}
-
-.auth-container button:hover::before {
-  left: 100%;
-}
-
-.auth-container button:active {
-  transform: translateY(-1px) scale(0.98);
-}
-
-/* Link */
-.auth-container p {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #555;
-  animation: fadeInUp 0.8s ease-out 0.7s both;
-}
-
-.auth-link {
-  color: #45256c;
-  font-weight: 500;
-  cursor: pointer;
-  margin-left: 6px;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.auth-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(to right, #7e5dbb, #060f1f);
-  transition: width 0.3s ease;
-}
-
-.auth-link:hover {
-  color: #7e5dbb;
-  transform: translateY(-1px);
-}
-
-.auth-link:hover::after {
-  width: 100%;
-}
-
-/* Floating elements */
 .floating-element {
   position: absolute;
-  pointer-events: none;
+  font-size: 2rem;
   opacity: 0.1;
   animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .floating-element:nth-child(1) {
@@ -212,6 +54,150 @@
   animation-delay: 4s;
 }
 
+.auth-container {
+  max-width: 450px;
+  width: 100%;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  text-align: center;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #667eea);
+  border-radius: 30px;
+  z-index: -1;
+  opacity: 0.3;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.auth-container h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 0.8s ease-out 0.3s both;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.auth-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-container input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.auth-container button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.auth-container button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.auth-container button:hover::before {
+  left: 100%;
+}
+
+.auth-container button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.auth-container p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.auth-link {
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.auth-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #764ba2;
+  transform: translateY(-1px);
+}
+
+.auth-link:hover::after {
+  width: 100%;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -219,6 +205,15 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes backgroundShift {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
   }
 }
 
@@ -255,24 +250,6 @@
   }
 }
 
-@keyframes expandLine {
-  from {
-    width: 0;
-  }
-  to {
-    width: 60px;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -285,6 +262,15 @@
   }
 }
 
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .auth-container {
@@ -293,6 +279,15 @@
   }
   
   .auth-container h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+  
+  .auth-container input {
+    padding: 1rem 1.2rem;
+  }
+  
+  .auth-container button {
+    padding: 1rem;
+    font-size: 1rem;
   }
 }

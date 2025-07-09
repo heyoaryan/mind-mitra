@@ -18,6 +18,9 @@ const LoadingSpinner = ({ message = "Loading..." }) => {
             <span></span>
             <span></span>
           </div>
+          <div className="progress-container">
+            <div className="progress-bar"></div>
+          </div>
         </div>
       </div>
     </div>
