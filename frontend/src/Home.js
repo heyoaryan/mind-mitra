@@ -4,14 +4,55 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import LoadingSpinner from './components/LoadingSpinner';
+import ParticleBackground from './components/ParticleBackground';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 function Home() {
   const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  React.useEffect(() => {
+    // Scroll animation observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [loading]);
 
   const handleStartChat = () => {
-    navigate("/chat");
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/chat");
+    }, 1000);
+  };
+
+  const handleLoginClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate('/login');
+    }, 1000);
   };
 
   const chartData = {
@@ -34,6 +75,10 @@ function Home() {
 
   const chartOptions = {
     responsive: true,
+    animation: {
+      duration: 2000,
+      easing: 'easeInOutQuart',
+    },
     plugins: {
       legend: {
         position: 'top',
@@ -53,11 +98,16 @@ function Home() {
     }
   };
 
+  if (loading) {
+    return <LoadingSpinner message="Welcome to MindMitra..." />;
+  }
+
   return (
     <div className="home-container">
+      <ParticleBackground density={30} />
       <header className="navbar">
         <h1 className="logo">🧠 MindMitra</h1>
-        <button className="login-btn" onClick={() => navigate('/login')}>Login</button>
+        <button className="login-btn" onClick={handleLoginClick}>Login</button>
       </header>
 
       <main className="main-section video-hero">
@@ -75,14 +125,14 @@ function Home() {
         </div>
       </main>
 
-      <section className="info-section fadeInUp">
+      <section className="info-section animate-on-scroll">
         <h3>About MindMitra</h3>
         <p>
           MindMitra is an AI-based mental health chatbot that provides a safe, anonymous, and emotionally intelligent space for individuals to express, reflect, and heal — anytime, anywhere.
         </p>
       </section>
 
-      <section className="info-section fadeInUp features-section">
+      <section className="info-section animate-on-scroll features-section">
         <h3>Key Features</h3>
         <div className="feature-grid">
           <div className="feature-card">⏰ 24/7 Support</div>
@@ -98,14 +148,14 @@ function Home() {
         </div>
       </section>
 
-      <section className="info-section fadeInUp">
+      <section className="info-section animate-on-scroll">
         <h3>How It Works</h3>
         <p>
           You simply start chatting — MindMitra uses natural language AI, detects your tone, understands your mood, and guides you in a calm, secure environment. You can talk or type, in multiple languages.
         </p>
       </section>
 
-      <section className="info-section fadeInUp">
+      <section className="info-section animate-on-scroll">
         <h3>📊 Mental Disorder Statistics: India vs Global</h3>
         <p>This chart compares the prevalence of common mental disorders between India and the global average (percent of population).</p>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -113,7 +163,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="info-section fadeInUp">
+      <section className="info-section animate-on-scroll who-section">
         <h3>🧠 Why Mental Health Matters - WHO Insights</h3>
         <p>
           According to the <strong>World Health Organization (WHO)</strong>, over <strong>970 million people globally</strong> suffer from mental or behavioral disorders.
@@ -121,7 +171,7 @@ function Home() {
         </p>
       </section>
 
-      <footer className="footer fadeInUp">
+      <footer className="footer">
         © 2025 MindMitra — Empowering Mental Health with AI 💜
       </footer>
     </div>

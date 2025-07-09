@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Chart from 'chart.js/auto';
 import './Dashboard.css';
+import LoadingSpinner from './components/LoadingSpinner';
+import ParticleBackground from './components/ParticleBackground';
 
 let barChartInstance = null;
 let pieChartInstance = null;
@@ -10,18 +12,23 @@ let pieChartInstance = null;
 function Dashboard() {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = localStorage.getItem('username');
     if (!user) {
       navigate('/login');
     } else {
+      // Simulate loading time
+      setTimeout(() => {
       fetch(`http://localhost:5000/stats?username=${user}`)
         .then(res => res.json())
         .then(data => {
           setStats(data);
+            setLoading(false);
           setTimeout(() => renderCharts(data.emotionCount), 100);
         });
+      }, 1500);
     }
   }, [navigate]);
 
@@ -50,6 +57,19 @@ function Dashboard() {
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuart',
+          },
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  family: 'Poppins'
+                }
+              }
+            }
+          }
         }
       });
     }
@@ -67,13 +87,31 @@ function Dashboard() {
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          animation: {
+            duration: 2000,
+            easing: 'easeInOutQuart',
+          },
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  family: 'Poppins'
+                }
+              }
+            }
+          }
         }
       });
     }
   };
 
+  if (loading) {
+    return <LoadingSpinner message="Loading your analytics..." />;
+  }
+
   return (
     <div className="dashboard-container">
+      <ParticleBackground density={25} />
       <div className="dashboard-header">
         <h1>🧠 MindMitra Dashboard</h1>
       </div>

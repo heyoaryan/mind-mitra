@@ -1,106 +1,164 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: linear-gradient(to right, #a8edea, #fed6e3);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #d4f0fc, #e7d0f9);
+  color: #333;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.container {
-  width: 90%;
-  max-width: 700px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  text-align: center;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-h1 {
-  margin-bottom: 20px;
+::-webkit-scrollbar-track {
+  background: rgba(126, 93, 187, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7e5dbb, #060f1f);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6a4ca5, #040a14);
+}
+
+/* Selection */
+::selection {
+  background: rgba(126, 93, 187, 0.3);
   color: #333;
 }
 
-.chat-box {
-  height: 400px;
-  overflow-y: auto;
-  border: 2px solid #ccc;
-  padding: 15px;
-  border-radius: 12px;
-  background: #f7f9fb;
-  margin-bottom: 15px;
-  text-align: left;
+/* Focus styles */
+*:focus {
+  outline: 2px solid rgba(126, 93, 187, 0.5);
+  outline-offset: 2px;
 }
 
-.msg {
-  padding: 10px 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  max-width: 85%;
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.3s ease;
 }
 
-.user {
-  background-color: #cce5ff;
-  align-self: flex-end;
-  margin-left: auto;
+/* Global animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.bot {
-  align-self: flex-start;
-  margin-right: auto;
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Emotion styles */
-.bot-positive {
-  background-color: #d4edda;
-  border-left: 5px solid #28a745;
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.bot-negative {
-  background-color: #f8d7da;
-  border-left: 5px solid #dc3545;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.bot-neutral {
-  background-color: #fff3cd;
-  border-left: 5px solid #ffc107;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.input-area {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
-input {
-  width: 60%;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(126, 93, 187, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(126, 93, 187, 0.8);
+  }
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
 }
 
-button:hover {
-  background-color: #0056b3;
+.animate-slide-up {
+  animation: slideInUp 0.8s ease-out;
 }
 
-.lang-select {
-  margin-bottom: 15px;
-  text-align: center;
+.animate-slide-down {
+  animation: slideInDown 0.8s ease-out;
 }
 
-.lang-select label {
-  font-weight: bold;
-  margin-right: 8px;
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
 }

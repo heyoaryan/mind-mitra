@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Chatbot.css';
+import LoadingSpinner from './components/LoadingSpinner';
+import ParticleBackground from './components/ParticleBackground';
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
@@ -9,12 +11,18 @@ function Chatbot() {
   const [chatSessions, setChatSessions] = useState([]);
   const [currentSessionIndex, setCurrentSessionIndex] = useState(0);
   const [typing, setTyping] = useState(false);
+  const [loading, setLoading] = useState(true);
   const chatEndRef = useRef(null);
   const navigate = useNavigate();
 
   const userEmail = localStorage.getItem("username") || null;
 
   useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
     const saved = localStorage.getItem('mindmitraChats');
     if (saved) {
       const parsed = JSON.parse(saved);
@@ -25,6 +33,8 @@ function Chatbot() {
       setChatSessions(initial);
       setMessages([]);
     }
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -124,19 +134,28 @@ function Chatbot() {
   };
 
   const handleLogout = () => {
+    setLoading(true);
+    setTimeout(() => {
     localStorage.clear();
     window.location.href = '/';
+    }, 1000);
   };
 
   const handleLogin = () => {
+    setLoading(true);
+    setTimeout(() => {
     window.location.href = '/login';
+    }, 1000);
   };
 
   const handleDashboardClick = () => {
     if (!userEmail) {
       alert("Please log in to access the Analytical Dashboard.");
     } else {
+      setLoading(true);
+      setTimeout(() => {
       navigate('/dashboard');
+      }, 1000);
     }
   };
 
@@ -178,8 +197,13 @@ function Chatbot() {
     )
   );
 
+  if (loading) {
+    return <LoadingSpinner message="Initializing MindMitra Chat..." />;
+  }
+
   return (
     <div className="chatbot-wrapper">
+      <ParticleBackground density={20} />
       <div className="chatbot-header">
         <div className="chatbot-logo">🧠 MindMitra</div>
         <div className="chatbot-controls">
