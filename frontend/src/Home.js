@@ -1,19 +1,14 @@
-// src/pages/Home.js
-import React from 'react';
-import './Home.css';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import './Home.css';
 import LoadingSpinner from './components/LoadingSpinner';
 import ParticleBackground from './components/ParticleBackground';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
 function Home() {
   const navigate = useNavigate();
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
@@ -22,7 +17,7 @@ function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Scroll animation observer
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,7 +30,7 @@ function Home() {
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll('.animate-on-scroll');
+    const elements = document.querySelectorAll('.scroll-animate');
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -55,47 +50,10 @@ function Home() {
     }, 1000);
   };
 
-  const chartData = {
-    labels: ['Anxiety', 'Depression', 'Bipolar', 'Schizophrenia', 'Eating Disoder', 'PTSD'],
-    datasets: [
-      {
-        label: 'India (%)',
-        data: [30, 28, 5, 6, 15, 5],
-        backgroundColor: 'rgba(106, 17, 203, 0.6)',
-        borderRadius: 100,
-      },
-      {
-        label: 'Global (%)',
-        data: [31, 28, 6, 5, 10, 80],
-        backgroundColor: 'rgba(37, 117, 252, 0.6)',
-        borderRadius: 100,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    animation: {
-      duration: 2000,
-      easing: 'easeInOutQuart',
-    },
-    plugins: {
-      legend: {
-        position: 'top',
-        labels: { color: '#333', font: { family: 'Poppins' } }
-      }
-    },
-    scales: {
-      x: {
-        ticks: { color: '#333', font: { family: 'Poppins' } },
-        grid: { display: false }
-      },
-      y: {
-        beginAtZero: true,
-        ticks: { color: '#333', font: { family: 'Poppins' } },
-        grid: { borderDash: [4, 4] }
-      }
-    }
+  const handleLearnMore = () => {
+    document.querySelector('.features-section').scrollIntoView({
+      behavior: 'smooth'
+    });
   };
 
   if (loading) {
@@ -105,74 +63,206 @@ function Home() {
   return (
     <div className="home-container">
       <ParticleBackground density={30} />
-      <header className="navbar">
-        <h1 className="logo">🧠 MindMitra</h1>
-        <button className="login-btn" onClick={handleLoginClick}>Login</button>
-      </header>
-
-      <main className="main-section video-hero">
-        <video autoPlay loop muted playsInline className="hero-video">
-          <source src="/Video/Home.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <div className="video-overlay">
-          <h2 className="main-heading">Welcome To MindMitra...</h2>
-          <p>Your AI-powered companion for emotional well-being.</p>
-          <button className="start-chat-btn" onClick={handleStartChat}>
-            Start Chat
+      
+      {/* Navigation */}
+      <nav className="navbar">
+        <div className="nav-content">
+          <div className="logo">
+            🧠 MindMitra
+          </div>
+          <button className="btn btn-primary" onClick={handleLoginClick}>
+            Login
           </button>
         </div>
-      </main>
+      </nav>
 
-      <section className="info-section animate-on-scroll">
-        <h3>About MindMitra</h3>
-        <p>
-          MindMitra is an AI-based mental health chatbot that provides a safe, anonymous, and emotionally intelligent space for individuals to express, reflect, and heal — anytime, anywhere.
-        </p>
-      </section>
-
-      <section className="info-section animate-on-scroll features-section">
-        <h3>Key Features</h3>
-        <div className="feature-grid">
-          <div className="feature-card">⏰ 24/7 Support</div>
-          <div className="feature-card">🎤 Voice-Enabled Chatting</div>
-          <div className="feature-card">🌐 Multilingual Conversations</div>
-          <div className="feature-card">💬 Emotion-Based Responses</div>
-          <div className="feature-card">📊 Wellness Summary</div>
-          <div className="feature-card">🧠 Sentiment Analysis</div>
-          <div className="feature-card">🔐 Anonymous & Secure</div>
-          <div className="feature-card">💾 Chat History Tracking</div>
-          <div className="feature-card">📥 Personalized Suggestions</div>
-          <div className="feature-card">🧘 Relaxation Recommendations</div>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="floating-elements">
+          <div className="floating-element">🧠</div>
+          <div className="floating-element">💭</div>
+          <div className="floating-element">✨</div>
+          <div className="floating-element">🌟</div>
+        </div>
+        
+        <div className="hero-content">
+          <h1 className="hero-title">
+            Your AI Mental Health Companion
+          </h1>
+          <p className="hero-subtitle">
+            Experience personalized mental health support with our advanced AI chatbot. 
+            Get 24/7 emotional guidance, multilingual conversations, and voice-enabled interactions 
+            in a safe, anonymous environment.
+          </p>
+          <div className="hero-buttons">
+            <button className="hero-btn hero-btn-primary" onClick={handleStartChat}>
+              🚀 Start Chatting Now
+            </button>
+            <button className="hero-btn hero-btn-secondary" onClick={handleLearnMore}>
+              📖 Learn More
+            </button>
+          </div>
         </div>
       </section>
 
-      <section className="info-section animate-on-scroll">
-        <h3>How It Works</h3>
-        <p>
-          You simply start chatting — MindMitra uses natural language AI, detects your tone, understands your mood, and guides you in a calm, secure environment. You can talk or type, in multiple languages.
-        </p>
-      </section>
-
-      <section className="info-section animate-on-scroll">
-        <h3>📊 Mental Disorder Statistics: India vs Global</h3>
-        <p>This chart compares the prevalence of common mental disorders between India and the global average (percent of population).</p>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <Bar data={chartData} options={chartOptions} />
+      {/* Features Section */}
+      <section className="features-section scroll-animate">
+        <div className="features-container">
+          <div className="features-header">
+            <h2 className="features-title">Powerful Features</h2>
+            <p className="features-subtitle">
+              Discover how MindMitra revolutionizes mental health support with cutting-edge AI technology
+            </p>
+          </div>
+          
+          <div className="features-grid">
+            <div className="feature-card">
+              <span className="feature-icon">🤖</span>
+              <h3 className="feature-title">AI-Powered Conversations</h3>
+              <p className="feature-description">
+                Advanced natural language processing for meaningful, empathetic conversations
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">🎤</span>
+              <h3 className="feature-title">Voice Interaction</h3>
+              <p className="feature-description">
+                Speak naturally with voice-to-text and text-to-speech capabilities
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">🌍</span>
+              <h3 className="feature-title">Multilingual Support</h3>
+              <p className="feature-description">
+                Communicate in your preferred language with real-time translation
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">😊</span>
+              <h3 className="feature-title">Emotion Detection</h3>
+              <p className="feature-description">
+                Smart emotion analysis for personalized responses and suggestions
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">📊</span>
+              <h3 className="feature-title">Analytics Dashboard</h3>
+              <p className="feature-description">
+                Track your mental health journey with detailed insights and progress
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">🔒</span>
+              <h3 className="feature-title">Privacy & Security</h3>
+              <p className="feature-description">
+                Complete anonymity and secure conversations with end-to-end protection
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="info-section animate-on-scroll who-section">
-        <h3>🧠 Why Mental Health Matters - WHO Insights</h3>
-        <p>
-          According to the <strong>World Health Organization (WHO)</strong>, over <strong>970 million people globally</strong> suffer from mental or behavioral disorders.
-          India alone faces over <strong>200 million mental health cases</strong> annually — and access to therapists is low. MindMitra aims to bridge that gap with emotional AI, voice support, and total privacy.
-        </p>
+      {/* About Section */}
+      <section className="about-section scroll-animate">
+        <div className="about-container">
+          <h2 className="about-title">About MindMitra</h2>
+          <p className="about-content">
+            MindMitra is an innovative AI-powered mental health platform designed to provide 
+            accessible, personalized support for individuals seeking emotional well-being. 
+            Our advanced chatbot combines cutting-edge artificial intelligence with empathetic 
+            conversation design to create a safe space for mental health discussions.
+          </p>
+          
+          <div className="stats-grid">
+            <div className="stat-card">
+              <span className="stat-number">24/7</span>
+              <span className="stat-label">Available Support</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">10+</span>
+              <span className="stat-label">Languages Supported</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Anonymous & Secure</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">AI</span>
+              <span className="stat-label">Powered Intelligence</span>
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Mental Health Statistics */}
+      <section className="features-section scroll-animate">
+        <div className="features-container">
+          <div className="features-header">
+            <h2 className="features-title">Mental Health Matters</h2>
+            <p className="features-subtitle">
+              Understanding the global impact of mental health challenges
+            </p>
+          </div>
+          
+          <div className="features-grid">
+            <div className="feature-card">
+              <span className="feature-icon">🌍</span>
+              <h3 className="feature-title">970M+ People</h3>
+              <p className="feature-description">
+                Globally suffer from mental health disorders according to WHO
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">🇮🇳</span>
+              <h3 className="feature-title">200M+ in India</h3>
+              <p className="feature-description">
+                Mental health cases annually with limited access to therapists
+              </p>
+            </div>
+            
+            <div className="feature-card">
+              <span className="feature-icon">⏰</span>
+              <h3 className="feature-title">Immediate Access</h3>
+              <p className="feature-description">
+                MindMitra bridges the gap with instant AI-powered support
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section scroll-animate">
+        <div className="cta-container">
+          <h2 className="cta-title">Ready to Start Your Journey?</h2>
+          <p className="cta-subtitle">
+            Take the first step towards better mental health with MindMitra's AI companion
+          </p>
+          <button className="cta-button" onClick={handleStartChat}>
+            Begin Your Conversation
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="footer">
-        © 2025 MindMitra — Empowering Mental Health with AI 💜
+        <div className="footer-content">
+          <p className="footer-text">
+            © 2025 MindMitra - Empowering Mental Health with AI Technology
+          </p>
+          <div className="footer-links">
+            <a href="#" className="footer-link">Privacy Policy</a>
+            <a href="#" className="footer-link">Terms of Service</a>
+            <a href="#" className="footer-link">Support</a>
+            <a href="#" className="footer-link">Contact</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
