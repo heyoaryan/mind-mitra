@@ -77,7 +77,7 @@ function Home() {
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
-            <h1 className="hero-title gradient-text">
+            <h1 className="hero-title">
               Your AI Mental Health Companion
             </h1>
             <p className="hero-subtitle">
@@ -101,7 +101,7 @@ function Home() {
       <section className="features-section scroll-animate">
         <div className="container">
           <div className="features-header">
-            <h2 className="features-title gradient-text">Powerful Features</h2>
+            <h2 className="features-title">Powerful Features</h2>
             <p className="features-subtitle">
               Discover how MindMitra revolutionizes mental health support with cutting-edge AI technology
             </p>
@@ -112,7 +112,7 @@ function Home() {
               <span className="feature-icon">🤖</span>
               <h3 className="feature-title">AI-Powered Conversations</h3>
               <p className="feature-description">
-                Advanced natural language processing for meaningful, empathetic conversations
+                Advanced natural language processing for meaningful, empathetic conversations that understand your emotions
               </p>
             </div>
             
@@ -120,7 +120,7 @@ function Home() {
               <span className="feature-icon">🎤</span>
               <h3 className="feature-title">Voice Interaction</h3>
               <p className="feature-description">
-                Speak naturally with voice-to-text and text-to-speech capabilities
+                Speak naturally with voice-to-text and text-to-speech capabilities for hands-free conversations
               </p>
             </div>
             
@@ -128,7 +128,7 @@ function Home() {
               <span className="feature-icon">🌍</span>
               <h3 className="feature-title">Multilingual Support</h3>
               <p className="feature-description">
-                Communicate in your preferred language with real-time translation
+                Communicate in your preferred language with real-time translation and cultural understanding
               </p>
             </div>
             
@@ -136,7 +136,7 @@ function Home() {
               <span className="feature-icon">😊</span>
               <h3 className="feature-title">Emotion Detection</h3>
               <p className="feature-description">
-                Smart emotion analysis for personalized responses and suggestions
+                Smart emotion analysis for personalized responses and tailored mental health suggestions
               </p>
             </div>
             
@@ -144,7 +144,7 @@ function Home() {
               <span className="feature-icon">📊</span>
               <h3 className="feature-title">Analytics Dashboard</h3>
               <p className="feature-description">
-                Track your mental health journey with detailed insights and progress
+                Track your mental health journey with detailed insights, progress charts, and wellness metrics
               </p>
             </div>
             
@@ -152,7 +152,7 @@ function Home() {
               <span className="feature-icon">🔒</span>
               <h3 className="feature-title">Privacy & Security</h3>
               <p className="feature-description">
-                Complete anonymity and secure conversations with end-to-end protection
+                Complete anonymity and secure conversations with end-to-end encryption and data protection
               </p>
             </div>
           </div>
@@ -162,7 +162,7 @@ function Home() {
       {/* About Section */}
       <section className="about-section scroll-animate">
         <div className="container">
-          <h2 className="about-title gradient-text">About MindMitra</h2>
+          <h2 className="about-title">About MindMitra</h2>
           <p className="about-content">
             MindMitra is an innovative AI-powered mental health platform designed to provide 
             accessible, personalized support for individuals seeking emotional well-being. 
@@ -195,18 +195,18 @@ function Home() {
       <section className="features-section scroll-animate">
         <div className="container">
           <div className="features-header">
-            <h2 className="features-title gradient-text">Mental Health Matters</h2>
+            <h2 className="features-title">Mental Health Matters</h2>
             <p className="features-subtitle">
-              Understanding the global impact of mental health challenges
+              Understanding the global impact of mental health challenges and how MindMitra helps
             </p>
           </div>
           
           <div className="features-grid">
             <div className="feature-card">
               <span className="feature-icon">🌍</span>
-              <h3 className="feature-title">970M+ People</h3>
+              <h3 className="feature-title">970M+ People Globally</h3>
               <p className="feature-description">
-                Globally suffer from mental health disorders according to WHO
+                Suffer from mental health disorders according to WHO, highlighting the urgent need for accessible support
               </p>
             </div>
             
@@ -214,7 +214,7 @@ function Home() {
               <span className="feature-icon">🇮🇳</span>
               <h3 className="feature-title">200M+ in India</h3>
               <p className="feature-description">
-                Mental health cases annually with limited access to therapists
+                Mental health cases annually with limited access to therapists and professional mental health services
               </p>
             </div>
             
@@ -222,7 +222,7 @@ function Home() {
               <span className="feature-icon">⏰</span>
               <h3 className="feature-title">Immediate Access</h3>
               <p className="feature-description">
-                MindMitra bridges the gap with instant AI-powered support
+                MindMitra bridges the gap with instant AI-powered support, available whenever you need it most
               </p>
             </div>
           </div>
@@ -232,9 +232,10 @@ function Home() {
       {/* CTA Section */}
       <section className="cta-section scroll-animate">
         <div className="container">
-          <h2 className="cta-title gradient-text">Ready to Start Your Journey?</h2>
+          <h2 className="cta-title">Ready to Start Your Journey?</h2>
           <p className="cta-subtitle">
-            Take the first step towards better mental health with MindMitra's AI companion
+            Take the first step towards better mental health with MindMitra's AI companion. 
+            Join thousands who have found support, understanding, and healing through our platform.
           </p>
           <button className="cta-button" onClick={handleStartChat}>
             Begin Your Conversation
