@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import LoadingSpinner from './components/LoadingSpinner';
+import ParticleBackground from './components/ParticleBackground';
 
 function Home() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,14 +38,14 @@ function Home() {
     setLoading(true);
     setTimeout(() => {
       navigate("/chat");
-    }, 800);
+    }, 1000);
   };
 
   const handleLoginClick = () => {
     setLoading(true);
     setTimeout(() => {
       navigate('/login');
-    }, 800);
+    }, 1000);
   };
 
   const handleLearnMore = () => {
@@ -59,6 +60,8 @@ function Home() {
 
   return (
     <div className="home-container animate-fade-in">
+      <ParticleBackground density={30} />
+      
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
@@ -83,11 +86,11 @@ function Home() {
             <p className="hero-subtitle">
               Experience personalized mental health support with our advanced AI chatbot. 
               Get 24/7 emotional guidance, multilingual conversations, and voice-enabled interactions 
-              in a safe, anonymous environment.
+              in a safe, anonymous environment designed for your wellbeing.
             </p>
             <div className="hero-buttons">
               <button className="hero-btn hero-btn-primary" onClick={handleStartChat}>
-                🚀 Start Chatting Now
+                🚀 Start Your Journey
               </button>
               <button className="hero-btn hero-btn-secondary" onClick={handleLearnMore}>
                 📖 Learn More
@@ -101,9 +104,10 @@ function Home() {
       <section className="features-section scroll-animate">
         <div className="container">
           <div className="features-header">
-            <h2 className="features-title">Powerful Features</h2>
+            <h2 className="features-title">Powerful AI Features</h2>
             <p className="features-subtitle">
-              Discover how MindMitra revolutionizes mental health support with cutting-edge AI technology
+              Discover how MindMitra revolutionizes mental health support with cutting-edge AI technology 
+              and compassionate understanding
             </p>
           </div>
           
@@ -112,7 +116,7 @@ function Home() {
               <span className="feature-icon">🤖</span>
               <h3 className="feature-title">AI-Powered Conversations</h3>
               <p className="feature-description">
-                Advanced natural language processing for meaningful, empathetic conversations that understand your emotions
+                Advanced natural language processing for meaningful, empathetic conversations that understand your emotions and provide personalized responses
               </p>
             </div>
             
@@ -120,7 +124,7 @@ function Home() {
               <span className="feature-icon">🎤</span>
               <h3 className="feature-title">Voice Interaction</h3>
               <p className="feature-description">
-                Speak naturally with voice-to-text and text-to-speech capabilities for hands-free conversations
+                Speak naturally with voice-to-text and text-to-speech capabilities for hands-free conversations and accessibility
               </p>
             </div>
             
@@ -128,7 +132,7 @@ function Home() {
               <span className="feature-icon">🌍</span>
               <h3 className="feature-title">Multilingual Support</h3>
               <p className="feature-description">
-                Communicate in your preferred language with real-time translation and cultural understanding
+                Communicate in your preferred language with real-time translation and cultural understanding across multiple languages
               </p>
             </div>
             
@@ -136,7 +140,7 @@ function Home() {
               <span className="feature-icon">😊</span>
               <h3 className="feature-title">Emotion Detection</h3>
               <p className="feature-description">
-                Smart emotion analysis for personalized responses and tailored mental health suggestions
+                Smart emotion analysis for personalized responses and tailored mental health suggestions based on your current mood
               </p>
             </div>
             
@@ -144,7 +148,7 @@ function Home() {
               <span className="feature-icon">📊</span>
               <h3 className="feature-title">Analytics Dashboard</h3>
               <p className="feature-description">
-                Track your mental health journey with detailed insights, progress charts, and wellness metrics
+                Track your mental health journey with detailed insights, progress charts, and wellness metrics to monitor your growth
               </p>
             </div>
             
@@ -152,7 +156,7 @@ function Home() {
               <span className="feature-icon">🔒</span>
               <h3 className="feature-title">Privacy & Security</h3>
               <p className="feature-description">
-                Complete anonymity and secure conversations with end-to-end encryption and data protection
+                Complete anonymity and secure conversations with end-to-end encryption and data protection for your peace of mind
               </p>
             </div>
           </div>
@@ -167,7 +171,7 @@ function Home() {
             MindMitra is an innovative AI-powered mental health platform designed to provide 
             accessible, personalized support for individuals seeking emotional well-being. 
             Our advanced chatbot combines cutting-edge artificial intelligence with empathetic 
-            conversation design to create a safe space for mental health discussions.
+            conversation design to create a safe space for mental health discussions and healing.
           </p>
           
           <div className="stats-grid">
@@ -192,12 +196,12 @@ function Home() {
       </section>
 
       {/* Mental Health Statistics */}
-      <section className="features-section scroll-animate">
+      <section className="mental-health-section scroll-animate">
         <div className="container">
           <div className="features-header">
             <h2 className="features-title">Mental Health Matters</h2>
             <p className="features-subtitle">
-              Understanding the global impact of mental health challenges and how MindMitra helps
+              Understanding the global impact of mental health challenges and how MindMitra provides accessible support
             </p>
           </div>
           
@@ -206,7 +210,7 @@ function Home() {
               <span className="feature-icon">🌍</span>
               <h3 className="feature-title">970M+ People Globally</h3>
               <p className="feature-description">
-                Suffer from mental health disorders according to WHO, highlighting the urgent need for accessible support
+                Suffer from mental health disorders according to WHO, highlighting the urgent need for accessible support and intervention
               </p>
             </div>
             
@@ -214,7 +218,7 @@ function Home() {
               <span className="feature-icon">🇮🇳</span>
               <h3 className="feature-title">200M+ in India</h3>
               <p className="feature-description">
-                Mental health cases annually with limited access to therapists and professional mental health services
+                Mental health cases annually with limited access to therapists and professional mental health services in the region
               </p>
             </div>
             
@@ -222,7 +226,7 @@ function Home() {
               <span className="feature-icon">⏰</span>
               <h3 className="feature-title">Immediate Access</h3>
               <p className="feature-description">
-                MindMitra bridges the gap with instant AI-powered support, available whenever you need it most
+                MindMitra bridges the gap with instant AI-powered support, available whenever you need it most, day or night
               </p>
             </div>
           </div>

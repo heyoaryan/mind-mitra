@@ -1,7 +1,8 @@
-/* MindMitra Dashboard - Modern Design */
+/* MindMitra Dashboard - Modern Professional Design */
+
 .dashboard-container {
   min-height: 100vh;
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   background: var(--bg-primary);
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@
   height: 100%;
   background: 
     radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 80% 20%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
   animation: backgroundFloat 20s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
@@ -31,7 +32,7 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--space-xl);
   width: 100%;
   max-width: 1200px;
 }
@@ -44,15 +45,29 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: logoGlow 3s ease-in-out infinite alternate, slideDown 0.8s ease-out;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--space-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-sm);
+  position: relative;
+}
+
+.dashboard-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--secondary-gradient);
+  border-radius: var(--radius-full);
+  animation: slideUp 0.8s ease-out 0.3s both;
 }
 
 .dashboard-subtitle {
-  font-size: 1.2rem;
+  font-size: var(--font-size-xl);
   color: var(--text-secondary);
   animation: slideUp 0.8s ease-out 0.3s both;
 }
@@ -61,21 +76,35 @@
 .dashboard-nav {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
   animation: slideUp 0.8s ease-out 0.5s both;
 }
 
 .nav-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
   border-radius: var(--radius-xl);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   backdrop-filter: blur(10px);
   font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left var(--duration-slow);
 }
 
 .nav-btn:hover,
@@ -86,11 +115,15 @@
   box-shadow: var(--shadow-primary);
 }
 
+.nav-btn:hover::before {
+  left: 100%;
+}
+
 /* Stats Cards */
 .stats-section {
   width: 100%;
   max-width: 1200px;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--space-xl);
   position: relative;
   z-index: 1;
 }
@@ -98,17 +131,17 @@
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .stat-card {
-  background: var(--glass-bg);
+  background: var(--bg-glass);
   backdrop-filter: blur(30px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-xl);
   text-align: center;
-  transition: all 0.4s ease;
+  transition: all var(--duration-normal) ease;
   position: relative;
   overflow: hidden;
   animation: scaleIn 0.8s ease-out;
@@ -128,10 +161,10 @@
   right: -2px;
   bottom: -2px;
   background: var(--primary-gradient);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-2xl);
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-normal) ease;
   animation: borderGlow 3s ease-in-out infinite;
 }
 
@@ -141,19 +174,20 @@
 }
 
 .stat-card:hover::before {
-  opacity: 0.5;
+  opacity: 0.1;
 }
 
 .stat-icon {
   font-size: 2.5rem;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--space-md);
   display: block;
   animation: pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.3));
 }
 
 .stat-title {
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-sm);
   color: var(--text-secondary);
   font-weight: 600;
   text-transform: uppercase;
@@ -172,17 +206,17 @@
 }
 
 .stat-change {
-  font-size: 0.9rem;
-  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
   font-weight: 500;
 }
 
 .stat-change.positive {
-  color: #4caf50;
+  color: #10b981;
 }
 
 .stat-change.negative {
-  color: #f44336;
+  color: #ef4444;
 }
 
 /* Chart Section */
@@ -191,23 +225,24 @@
   max-width: 1200px;
   position: relative;
   z-index: 1;
+  margin-bottom: var(--space-xl);
 }
 
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: var(--spacing-xl);
+  gap: var(--space-xl);
 }
 
 .chart-container {
-  background: var(--glass-bg);
+  background: var(--bg-glass);
   backdrop-filter: blur(30px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-xl);
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: all var(--duration-normal) ease;
   animation: slideUp 0.8s ease-out;
   animation-fill-mode: both;
 }
@@ -223,10 +258,10 @@
   right: -2px;
   bottom: -2px;
   background: var(--primary-gradient);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-2xl);
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-normal) ease;
   animation: borderGlow 3s ease-in-out infinite;
 }
 
@@ -236,24 +271,24 @@
 }
 
 .chart-container:hover::before {
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
 .chart-header {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--space-lg);
   text-align: center;
 }
 
 .chart-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   color: var(--text-primary);
   font-weight: 700;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--space-xs);
 }
 
 .chart-subtitle {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
 }
 
 .chart-wrapper {
@@ -263,8 +298,8 @@
   z-index: 1;
   animation: fadeIn 1s ease-out 1s both;
   background: rgba(255, 255, 255, 0.02);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
 }
 
 /* Loading State */
@@ -279,32 +314,33 @@
 }
 
 .loading-text {
-  font-size: 1.2rem;
-  margin-top: var(--spacing-md);
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-md);
 }
 
 /* Empty State */
 .empty-state {
   text-align: center;
-  padding: var(--spacing-xl);
+  padding: var(--space-xl);
   color: var(--text-secondary);
 }
 
 .empty-state-icon {
   font-size: 4rem;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--space-md);
   opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
 }
 
 .empty-state-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--space-sm);
   color: var(--text-primary);
 }
 
 .empty-state-description {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   line-height: 1.6;
 }
 
@@ -312,7 +348,7 @@
 .insights-section {
   width: 100%;
   max-width: 1200px;
-  margin-top: var(--spacing-xl);
+  margin-top: var(--space-xl);
   position: relative;
   z-index: 1;
 }
@@ -320,42 +356,60 @@
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-lg);
 }
 
 .insight-card {
-  background: var(--glass-bg);
+  background: var(--bg-glass);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-lg);
+  transition: all var(--duration-normal) ease;
   animation: slideUp 0.8s ease-out;
   animation-fill-mode: both;
+  position: relative;
+  overflow: hidden;
 }
 
 .insight-card:nth-child(1) { animation-delay: 1s; }
 .insight-card:nth-child(2) { animation-delay: 1.2s; }
 .insight-card:nth-child(3) { animation-delay: 1.4s; }
 
+.insight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left var(--duration-slow);
+}
+
 .insight-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-primary);
 }
 
+.insight-card:hover::before {
+  left: 100%;
+}
+
 .insight-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .insight-icon {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
+  filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
 }
 
 .insight-title {
-  font-size: 1.1rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -363,101 +417,16 @@
 .insight-content {
   color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: var(--space-md);
 }
 
 .insight-value {
-  font-size: 1.5rem;
+  font-size: var(--font-size-xl);
   font-weight: 700;
-  color: var(--text-primary);
-  margin-top: var(--spacing-sm);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes backgroundFloat {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.1) rotate(180deg);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes logoGlow {
-  0% {
-    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
-  }
-  100% {
-    filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.8));
-  }
-}
-
-@keyframes countUp {
-  from {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes borderGlow {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Responsive Design */
@@ -473,7 +442,7 @@
 
 @media (max-width: 768px) {
   .dashboard-container {
-    padding: var(--spacing-md);
+    padding: var(--space-md);
   }
   
   .stats-grid {
@@ -489,21 +458,21 @@
   }
   
   .dashboard-header h1 {
-    font-size: 2rem;
+    font-size: var(--font-size-3xl);
   }
   
   .chart-container {
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
   }
   
   .dashboard-nav {
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: var(--space-sm);
   }
   
   .nav-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-    font-size: 0.9rem;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
   }
 }
 
@@ -513,15 +482,15 @@
   }
   
   .stat-card {
-    padding: var(--spacing-lg);
+    padding: var(--space-lg);
   }
   
   .stat-value {
-    font-size: 2rem;
+    font-size: var(--font-size-4xl);
   }
   
   .chart-title {
-    font-size: 1.2rem;
+    font-size: var(--font-size-xl);
   }
   
   .insights-grid {
@@ -529,7 +498,7 @@
   }
   
   .dashboard-header h1 {
-    font-size: 1.8rem;
+    font-size: var(--font-size-2xl);
   }
 }
 

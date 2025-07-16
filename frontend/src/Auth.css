@@ -1,4 +1,5 @@
-/* Auth Pages - Beautiful Design */
+/* MindMitra Auth Pages - Modern Professional Design */
+
 .auth-page {
   display: flex;
   justify-content: center;
@@ -20,34 +21,23 @@
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 25% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 25% 75%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(240, 147, 251, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.05) 0%, transparent 50%);
   animation: backgroundFloat 25s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
 }
 
-@keyframes backgroundFloat {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-  }
-  33% {
-    transform: scale(1.1) rotate(120deg);
-  }
-  66% {
-    transform: scale(0.9) rotate(240deg);
-  }
-}
-
 /* Floating Elements */
 .floating-element {
   position: absolute;
-  font-size: 2.5rem;
+  font-size: 3rem;
   opacity: 0.1;
   animation: float 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.3));
 }
 
 .floating-element:nth-child(1) {
@@ -68,20 +58,26 @@
   animation-delay: 5s;
 }
 
+.floating-element:nth-child(4) {
+  top: 60%;
+  right: 25%;
+  animation-delay: 7.5s;
+}
+
 /* Auth Container */
 .auth-container {
   max-width: 450px;
   width: 100%;
-  padding: var(--space-3xl);
+  padding: var(--space-4xl);
   background: var(--bg-glass);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-glass);
   border-radius: var(--radius-2xl);
   text-align: center;
   animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   backdrop-filter: blur(30px);
   position: relative;
   z-index: 2;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-glass);
 }
 
 .auth-container::before {
@@ -91,10 +87,10 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: var(--gradient-primary);
+  background: var(--primary-gradient);
   border-radius: var(--radius-2xl);
   z-index: -1;
-  opacity: 0.1;
+  opacity: 0;
   animation: borderGlow 4s ease-in-out infinite;
 }
 
@@ -111,11 +107,25 @@
   font-size: var(--font-size-3xl);
   font-weight: 900;
   margin-bottom: var(--space-2xl);
-  background: var(--gradient-primary);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: slideDown 0.8s ease-out 0.3s both;
+  position: relative;
+}
+
+.auth-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--secondary-gradient);
+  border-radius: var(--radius-full);
+  animation: slideUp 0.8s ease-out 0.5s both;
 }
 
 /* Form Styling */
@@ -129,11 +139,12 @@
   padding: var(--space-lg);
   font-size: var(--font-size-base);
   border-radius: var(--radius-xl);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
   color: var(--text-primary);
-  transition: all 0.4s ease;
+  transition: all var(--duration-normal) ease;
   backdrop-filter: blur(10px);
+  position: relative;
 }
 
 .auth-container .input::placeholder {
@@ -142,10 +153,42 @@
 
 .auth-container .input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-  background: var(--bg-glass);
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  background: var(--bg-glass-hover);
   transform: scale(1.02);
+}
+
+/* Input Group with Floating Labels */
+.input-group {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.input-group .input {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-md);
+}
+
+.input-label {
+  position: absolute;
+  left: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: all var(--duration-normal) ease;
+  pointer-events: none;
+  background: transparent;
+  padding: 0 var(--space-sm);
+  font-size: var(--font-size-base);
+}
+
+.input-group .input:focus + .input-label,
+.input-group .input:not(:placeholder-shown) + .input-label {
+  top: var(--space-md);
+  transform: translateY(0) scale(0.8);
+  color: var(--text-accent);
+  background: var(--bg-glass);
 }
 
 /* Submit Button */
@@ -155,16 +198,17 @@
   padding: var(--space-lg);
   font-size: var(--font-size-lg);
   font-weight: 700;
-  background: var(--gradient-primary);
+  background: var(--primary-gradient);
   color: white;
   border: none;
   border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all var(--duration-normal) ease;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-primary);
 }
 
 .auth-container button[type="submit"]::before,
@@ -176,13 +220,13 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
+  transition: left var(--duration-slow);
 }
 
 .auth-container button[type="submit"]:hover,
 .auth-container button:not(.auth-link):hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
 }
 
 .auth-container button[type="submit"]:hover::before,
@@ -204,11 +248,11 @@
 }
 
 .auth-link {
-  color: var(--primary);
+  color: var(--text-accent);
   font-weight: 700;
   cursor: pointer;
   margin-left: var(--space-sm);
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) ease;
   background: none;
   border: none;
   padding: 0;
@@ -225,12 +269,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-primary);
-  transition: width 0.3s ease;
+  background: var(--primary-gradient);
+  transition: width var(--duration-normal) ease;
 }
 
 .auth-link:hover {
-  color: var(--secondary);
+  color: var(--text-primary);
   transform: translateY(-1px);
 }
 
@@ -251,8 +295,8 @@
   left: 50%;
   width: 40px;
   height: 40px;
-  border: 4px solid var(--border);
-  border-top: 4px solid var(--primary);
+  border: 4px solid var(--border-glass);
+  border-top: 4px solid var(--text-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   transform: translate(-50%, -50%);
@@ -267,41 +311,60 @@
   font-weight: 600;
   font-size: var(--font-size-sm);
   animation: slideDown 0.5s ease-out;
+  backdrop-filter: blur(10px);
 }
 
 .auth-message.success {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  color: var(--success);
+  color: #10b981;
 }
 
 .auth-message.error {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--error);
+  color: #ef4444;
 }
 
-/* Input Focus Effects */
-.input-group {
-  position: relative;
+/* Social Login Buttons */
+.social-login {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-glass);
 }
 
-.input-group .input:focus + .input-label,
-.input-group .input:not(:placeholder-shown) + .input-label {
-  transform: translateY(-25px) scale(0.8);
-  color: var(--primary);
-}
-
-.input-label {
-  position: absolute;
-  left: var(--space-lg);
-  top: 50%;
-  transform: translateY(-50%);
+.social-login p {
+  margin-bottom: var(--space-lg);
   color: var(--text-muted);
-  transition: all 0.3s ease;
-  pointer-events: none;
-  background: var(--bg-card);
-  padding: 0 var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.social-buttons {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.social-btn {
+  flex: 1;
+  padding: var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-normal) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-weight: 500;
+}
+
+.social-btn:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-accent);
+  color: var(--text-primary);
+  transform: translateY(-2px);
 }
 
 /* Responsive Design */
@@ -346,6 +409,10 @@
   .auth-container button:not(.auth-link) {
     padding: var(--space-md);
     font-size: var(--font-size-base);
+  }
+  
+  .social-buttons {
+    flex-direction: column;
   }
 }
 

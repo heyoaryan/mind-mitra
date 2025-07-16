@@ -31,7 +31,7 @@ function Dashboard() {
             console.error('Error fetching stats:', error);
             setLoading(false);
           });
-      }, 1500);
+      }, 2000);
     }
   }, [navigate]);
 
@@ -47,18 +47,18 @@ function Dashboard() {
     }
 
     const chartColors = {
-      happy: '#4caf50',
-      sad: '#2196f3',
-      angry: '#ff5722',
-      fear: '#ff9800',
-      love: '#e91e63',
-      surprise: '#9c27b0',
-      neutral: '#607d8b'
+      happy: '#10b981',
+      sad: '#3b82f6',
+      angry: '#ef4444',
+      fear: '#f59e0b',
+      love: '#ec4899',
+      surprise: '#8b5cf6',
+      neutral: '#6b7280'
     };
 
     const emotions = Object.keys(emotionData);
     const values = Object.values(emotionData);
-    const colors = emotions.map(emotion => chartColors[emotion] || '#607d8b');
+    const colors = emotions.map(emotion => chartColors[emotion] || '#6b7280');
 
     if (barCanvas && emotions.length > 0) {
       barChartInstance = new Chart(barCanvas.getContext("2d"), {
@@ -87,7 +87,7 @@ function Dashboard() {
               display: false
             },
             tooltip: {
-              backgroundColor: 'rgba(15, 15, 35, 0.9)',
+              backgroundColor: 'rgba(10, 10, 15, 0.9)',
               titleColor: '#ffffff',
               bodyColor: '#ffffff',
               borderColor: 'rgba(102, 126, 234, 0.5)',
@@ -159,7 +159,7 @@ function Dashboard() {
               }
             },
             tooltip: {
-              backgroundColor: 'rgba(15, 15, 35, 0.9)',
+              backgroundColor: 'rgba(10, 10, 15, 0.9)',
               titleColor: '#ffffff',
               bodyColor: '#ffffff',
               borderColor: 'rgba(102, 126, 234, 0.5)',
@@ -189,7 +189,7 @@ function Dashboard() {
   };
 
   if (loading) {
-    return <LoadingSpinner message="Loading your analytics..." />;
+    return <LoadingSpinner message="Loading your analytics dashboard..." />;
   }
 
   const totalEmotions = stats ? Object.values(stats.emotionCount).reduce((a, b) => a + b, 0) : 0;
@@ -205,7 +205,7 @@ function Dashboard() {
       <div className="dashboard-header">
         <h1>🧠 MindMitra Analytics</h1>
         <p className="dashboard-subtitle">
-          Your personal mental health insights and progress tracking
+          Your personal mental health insights and progress tracking dashboard
         </p>
       </div>
 
@@ -305,7 +305,7 @@ function Dashboard() {
                   <h4 className="insight-title">Weekly Goal</h4>
                 </div>
                 <div className="insight-content">
-                  You've had {stats.sessions} conversations this period. Keep up the great work in maintaining your mental health!
+                  You've had {stats.sessions} conversations this period. Keep up the great work in maintaining your mental health journey!
                 </div>
                 <div className="insight-value">{Math.min(100, Math.floor((stats.sessions / 7) * 100))}% Complete</div>
               </div>
@@ -316,7 +316,7 @@ function Dashboard() {
                   <h4 className="insight-title">Recommendation</h4>
                 </div>
                 <div className="insight-content">
-                  Based on your patterns, consider exploring mindfulness techniques during your next chat session.
+                  Based on your emotional patterns, consider exploring mindfulness techniques during your next chat session.
                 </div>
                 <div className="insight-value">Personalized Tip</div>
               </div>
@@ -327,7 +327,7 @@ function Dashboard() {
                   <h4 className="insight-title">Progress</h4>
                 </div>
                 <div className="insight-content">
-                  You're actively engaging with your mental health journey. Your consistency shows great self-care.
+                  You're actively engaging with your mental health journey. Your consistency shows excellent self-care habits.
                 </div>
                 <div className="insight-value">Excellent</div>
               </div>

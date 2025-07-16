@@ -1,4 +1,5 @@
-/* Beautiful Loading Spinner */
+/* MindMitra Loading Spinner - Professional Design */
+
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -22,8 +23,8 @@
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 30% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 30% 70%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
   animation: backgroundFloat 20s ease-in-out infinite;
   z-index: -1;
 }
@@ -38,9 +39,9 @@
 /* Brain Loader Animation */
 .brain-loader {
   position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto var(--space-3xl);
+  width: 200px;
+  height: 200px;
+  margin: 0 auto var(--space-4xl);
 }
 
 .brain-wave {
@@ -57,24 +58,24 @@
   width: 80px;
   height: 80px;
   animation-delay: 0s;
-  border-color: rgba(99, 102, 241, 0.8);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  border-color: rgba(102, 126, 234, 0.8);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
 .brain-wave:nth-child(2) {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   animation-delay: 0.8s;
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
+  border-color: rgba(240, 147, 251, 0.6);
+  box-shadow: 0 0 25px rgba(240, 147, 251, 0.3);
 }
 
 .brain-wave:nth-child(3) {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   animation-delay: 1.6s;
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+  border-color: rgba(79, 172, 254, 0.4);
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
 }
 
 @keyframes brainPulse {
@@ -93,9 +94,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 4rem;
+  font-size: 4.5rem;
   animation: brainFloat 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.6));
+  filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.6));
   z-index: 2;
 }
 
@@ -124,7 +125,7 @@
   font-weight: 700;
   display: block;
   margin-bottom: var(--space-2xl);
-  background: var(--gradient-primary);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -133,10 +134,10 @@
 
 @keyframes textGlow {
   0% {
-    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3));
+    filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.3));
   }
   100% {
-    filter: drop-shadow(0 0 35px rgba(99, 102, 241, 0.8));
+    filter: drop-shadow(0 0 35px rgba(102, 126, 234, 0.8));
   }
 }
 
@@ -149,12 +150,12 @@
 }
 
 .loading-dots span {
-  width: 16px;
-  height: 16px;
-  background: var(--gradient-primary);
+  width: 18px;
+  height: 18px;
+  background: var(--primary-gradient);
   border-radius: 50%;
   animation: dotBounce 1.6s ease-in-out infinite both;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
 }
 
 .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
@@ -174,21 +175,22 @@
 
 /* Progress Bar */
 .progress-container {
-  width: 350px;
-  height: 6px;
+  width: 400px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar {
   height: 100%;
-  background: var(--gradient-primary);
+  background: var(--primary-gradient);
   border-radius: var(--radius-full);
   animation: progressFill 4s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
   position: relative;
 }
 
@@ -237,12 +239,13 @@
 
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--gradient-primary);
+  width: 6px;
+  height: 6px;
+  background: var(--primary-gradient);
   border-radius: 50%;
   opacity: 0.6;
   animation: particleFloat 8s linear infinite;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
 }
 
 .particle:nth-child(1) {
@@ -319,17 +322,23 @@
 /* Loading Tips */
 .loading-tips {
   margin-top: var(--space-2xl);
-  max-width: 400px;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .loading-tip {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   color: var(--text-secondary);
   font-style: italic;
   animation: tipFade 6s ease-in-out infinite;
   opacity: 0;
+  line-height: 1.6;
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .loading-tip.active {
@@ -348,8 +357,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .brain-loader {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
   }
   
   .brain-wave:nth-child(1) {
@@ -358,8 +367,42 @@
   }
   
   .brain-wave:nth-child(2) {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .brain-wave:nth-child(3) {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .brain-icon {
+    font-size: 3.5rem;
+  }
+  
+  .loading-message {
+    font-size: var(--font-size-xl);
+  }
+  
+  .progress-container {
+    width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brain-loader {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .brain-wave:nth-child(1) {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .brain-wave:nth-child(2) {
+    width: 80px;
+    height: 80px;
   }
   
   .brain-wave:nth-child(3) {
@@ -372,45 +415,11 @@
   }
   
   .loading-message {
-    font-size: var(--font-size-xl);
-  }
-  
-  .progress-container {
-    width: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  .brain-loader {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .brain-wave:nth-child(1) {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .brain-wave:nth-child(2) {
-    width: 75px;
-    height: 75px;
-  }
-  
-  .brain-wave:nth-child(3) {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .brain-icon {
-    font-size: 2.5rem;
-  }
-  
-  .loading-message {
     font-size: var(--font-size-lg);
   }
   
   .progress-container {
-    width: 250px;
+    width: 280px;
   }
   
   .loading-dots {
@@ -418,8 +427,17 @@
   }
   
   .loading-dots span {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
+  }
+  
+  .loading-tips {
+    max-width: 320px;
+  }
+  
+  .loading-tip {
+    font-size: var(--font-size-sm);
+    padding: var(--space-sm);
   }
 }
 
@@ -430,7 +448,7 @@
   }
   
   .loading-dots span {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
   }
 }
 

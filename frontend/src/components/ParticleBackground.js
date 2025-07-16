@@ -36,9 +36,9 @@ const ParticleBackground = ({ density = 50, type = 'default' }) => {
     const getRandomColor = () => {
       const colors = [
         'rgba(102, 126, 234, ',
-        'rgba(118, 75, 162, ',
         'rgba(240, 147, 251, ',
-        'rgba(245, 87, 108, ',
+        'rgba(79, 172, 254, ',
+        'rgba(118, 75, 162, ',
       ];
       return colors[Math.floor(Math.random() * colors.length)];
     };
@@ -171,6 +171,22 @@ const ParticleBackground = ({ density = 50, type = 'default' }) => {
     return shapes;
   };
 
+  const createFloatingOrbs = () => {
+    const orbs = [];
+    for (let i = 0; i < 3; i++) {
+      orbs.push(
+        <div
+          key={i}
+          className="orb"
+          style={{
+            animationDelay: `${i * 5}s`
+          }}
+        />
+      );
+    }
+    return orbs;
+  };
+
   return (
     <>
       <canvas ref={canvasRef} className="particle-background" />
@@ -179,6 +195,9 @@ const ParticleBackground = ({ density = 50, type = 'default' }) => {
       </div>
       <div className="geometric-bg">
         {createGeometricShapes()}
+      </div>
+      <div className="floating-orbs">
+        {createFloatingOrbs()}
       </div>
     </>
   );

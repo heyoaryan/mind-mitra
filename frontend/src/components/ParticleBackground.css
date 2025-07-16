@@ -1,4 +1,5 @@
-/* Modern Particle Background */
+/* MindMitra Particle Background - Professional Design */
+
 .particle-background {
   position: fixed;
   top: 0;
@@ -26,12 +27,19 @@
   position: absolute;
   background: linear-gradient(135deg, #667eea, #764ba2);
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0.4;
   animation: particleFloat linear infinite;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
 }
 
 .particle:nth-child(odd) {
   background: linear-gradient(135deg, #f093fb, #f5576c);
+  box-shadow: 0 0 10px rgba(240, 147, 251, 0.3);
+}
+
+.particle:nth-child(3n) {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
 }
 
 .particle.small {
@@ -70,6 +78,7 @@
   background: rgba(102, 126, 234, 0.4);
   border-radius: 50%;
   animation: nodeGlow 3s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
 }
 
 .neural-connection {
@@ -77,7 +86,7 @@
   height: 1px;
   background: linear-gradient(90deg, 
     rgba(102, 126, 234, 0.2) 0%, 
-    rgba(118, 75, 162, 0.4) 50%, 
+    rgba(240, 147, 251, 0.4) 50%, 
     rgba(102, 126, 234, 0.2) 100%);
   transform-origin: left center;
   animation: connectionPulse 4s ease-in-out infinite;
@@ -99,6 +108,7 @@
   position: absolute;
   opacity: 0.05;
   animation: geometricFloat 20s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.2));
 }
 
 .geometric-shape.triangle {
@@ -171,6 +181,52 @@
   white-space: nowrap;
 }
 
+/* Floating orbs */
+.floating-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+  animation: orbFloat 15s ease-in-out infinite;
+  opacity: 0.1;
+}
+
+.orb:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 30% 30%, rgba(102, 126, 234, 0.2), transparent);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.orb:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, rgba(240, 147, 251, 0.2), transparent);
+  top: 60%;
+  right: 20%;
+  animation-delay: 5s;
+}
+
+.orb:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, rgba(79, 172, 254, 0.2), transparent);
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 10s;
+}
+
 /* Animations */
 @keyframes particleFloat {
   0% {
@@ -178,10 +234,10 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
   90% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
   100% {
     transform: translateY(-100px) translateX(100px) rotate(360deg);
@@ -243,6 +299,18 @@
   }
 }
 
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .particle.large {
@@ -266,5 +334,72 @@
   
   .matrix-column {
     font-size: 12px;
+  }
+  
+  .orb {
+    opacity: 0.05;
+  }
+  
+  .orb:nth-child(1) {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .orb:nth-child(2) {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .orb:nth-child(3) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .particle.large {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .particle.medium {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .particle.small {
+    width: 2px;
+    height: 2px;
+  }
+  
+  .geometric-shape {
+    opacity: 0.02;
+  }
+  
+  .orb {
+    opacity: 0.03;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .particle {
+    opacity: 0.6;
+  }
+  
+  .geometric-shape {
+    opacity: 0.1;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .neural-node,
+  .geometric-shape,
+  .matrix-column,
+  .orb {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

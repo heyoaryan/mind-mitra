@@ -5,11 +5,14 @@ const LoadingSpinner = ({ message = "Loading..." }) => {
   const [currentTip, setCurrentTip] = useState(0);
   
   const tips = [
-    "💡 MindMitra uses advanced AI to understand your emotions",
-    "🌟 Your conversations are completely private and secure",
-    "🎯 Get personalized suggestions based on your mood",
-    "🌍 Chat in multiple languages with real-time translation",
-    "📊 Track your mental health journey with analytics"
+    "💡 MindMitra uses advanced AI to understand your emotions and provide personalized support",
+    "🌟 Your conversations are completely private and secure with end-to-end encryption",
+    "🎯 Get personalized suggestions and coping strategies based on your current mood",
+    "🌍 Chat in multiple languages with real-time translation capabilities",
+    "📊 Track your mental health journey with detailed analytics and progress insights",
+    "🎤 Use voice commands for hands-free interaction and accessibility",
+    "🧠 Our AI learns from your conversations to provide better emotional support",
+    "🔒 Complete anonymity ensures your mental health discussions remain confidential"
   ];
 
   useEffect(() => {
